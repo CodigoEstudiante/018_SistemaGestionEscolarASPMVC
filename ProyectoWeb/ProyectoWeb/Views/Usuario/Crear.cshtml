@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Datos
+            </div>
+            <div class="card-body">
+                <input id="txtIdUsuario" type="hidden" value="0" />
+                <input id="txtIdReferencia" type="hidden" value="0" />
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-row align-items-end mb-2">
+                            <div class="col-sm-10">
+                                <label for="cboReferencia">Referencia</label>
+                                <select id="cboReferencia" class="form-control">
+                                    <option value="NINGUNA">NINGUNA</option>
+                                    <option value="ALUMNO">ALUMNO</option>
+                                    <option value="DOCENTE">DOCENTE</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary" id="btnVerReferencia" onclick="VerReferencia()">Ver</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="txtNombre">Nombres</label>
+                            <input type="text" class="form-control" id="txtNombre">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="txtApellidos">Apellidos</label>
+                            <input type="text" class="form-control" id="txtApellidos">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cboRol">Rol</label>
+                            <select id="cboRol" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="txtUsuario">Usuario</label>
+                            <input type="text" class="form-control" id="txtUsuario">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="txtClave">Contraseña</label>
+                            <input type="text" class="form-control" id="txtClave">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="cboEstado">Estado</label>
+                            <select id="cboEstado" class="form-control">
+                                <option value="1">Activo</option>
+                                <option value="0">No Activo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-sm-10">
+
+                        <button class="btn btn-success btn-sm" type="button" id="btnGuardar" onclick="GuardarCambios()">Guardar Cambios</button>
+                    </div>
+                    <div class="col-sm-2 float-right">
+                        <button class="btn btn-danger btn-sm float-right" type="button" id="btnCancelar" onclick="Cancelar()">Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Lista Usuarios
+            </div>
+            <div class="card-body">
+                <table id="tbusuario" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Usuario</th>
+                            <th>Contraseña</th>
+                            <th>Rol</th>
+                            <th>Referencia</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalReferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><span id="txtSeleccione"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tbModal" style="width:100%">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Controllers/Usuario.js")" type="text/javascript"></script>
+}
+

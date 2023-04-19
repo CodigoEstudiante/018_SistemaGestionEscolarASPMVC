@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Asignar Vacante";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        Crear Vacantes
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-sm float-right" onclick="GuardarCambios()">
+                            <i class="fas fa-check" aria-hidden="true"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="cboPeriodo">Periodo</label>
+                            <select id="cboperiodo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label for="cboNivelAcademico">Nivel Academico</label>
+                            <select id="cboNivelAcademico" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="bg"></label>
+                            <button type="button" class="btn btn-success btn-block mt-1" id="btnBuscar" onclick="Buscar()">Buscar</button>
+                        </div>
+
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table id="tbdata" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Descripcion Nivel</th>
+                                        <th>Descripcion Turno</th>
+                                        <th>Descripcion Grado</th>
+                                        <th>Descripcion Seccion</th>
+                                        <th>Total Vacantes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        </div>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Controllers/CrearVacante.js")" type="text/javascript"></script>
+}
+
+

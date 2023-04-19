@@ -1,0 +1,345 @@
+﻿
+@{
+    ViewBag.Title = "Crear Matricula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card" id="Ventana1">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        Crear Matricula
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row alert alert-warning">
+                    <input type="hidden" id="txtidperiodo" />
+                    <div class="col-sm-2">Periodo</div>
+                    <div class="col-sm-3"><label id="txtnombreperiodo"></label></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-sm-5">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Nivel Academico</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="cbonivelacademico"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Grado Seccion</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="cbogradoseccion"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary btn-block" type="button" onclick="buscar()">
+                                    Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-5">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Cantidad Vacantes</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="txtcantidadvacantes" disabled class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success btn-block" type="button" onclick="continuar()">
+                                    Continuar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+
+        <div class="card" id="Ventana2">
+            <div class="card-header text-center">
+                <div class="float-left">
+                    Detalle Matricula
+                </div>
+            </div>
+            <div class="card-body">
+
+                <form id="formdata">
+                    <!--DATOS ACADEMICOS-->
+                    <div class="row justify-content-between">
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="cbosituacionalumno">Situacion Alumno</label>
+                                </div>
+                                <select class="custom-select" id="cbosituacionalumno">
+                                    <option value="Nuevo">Nuevo</option>
+                                    <option value="Antiguo">Antiguo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="txtautogenerado">Codigo Matricula</label>
+                                </div>
+                                <input id="txtautogenerado" type="text" class="form-control" value="Autogenerado" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row  mb-3">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body p-2">
+                                    <p class="card-title"><ins>Datos Academicos</ins></p>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtinstitutoprocedencia">Instituto de Procedencia</label>
+                                                <input type="text" class="form-control" id="txtinstitutoprocedencia" name="institutoprocedencia" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="cboesrepitente">Es Repitente</label>
+                                                <select id="cboesrepitente" class="form-control">
+                                                    <option value="NO">NO</option>
+                                                    <option value="SI">SI</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtnivelacademico">Nivel Academico</label>
+                                                <input type="text" class="form-control required" id="txtnivelacademico" name="nivelacademico" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtgradoseccion">Grado seccion</label>
+                                                <input type="text" class="form-control required" id="txtgradoseccion" name="gradoseccion" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--DATOS DEL ALUMNO-->
+                    <div class="row mb-3">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body p-2">
+                                    <p class="card-title"><ins>Datos del Alumno</ins></p>
+                                    <input id="txtidalumno" type="hidden" value="0" />
+                                    <div class="row align-items-end">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="txtalumnodocumentoidentidad">Documento Identidad</label>
+                                                <input type="text" class="form-control required" id="txtalumnodocumentoidentidad" name="alumnodocumentoidentidad" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtalumnonombres">Nombres</label>
+                                                <input type="text" class="form-control required" id="txtalumnonombres" name="alumnonombres" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtalumnoapellidos">Apellidos</label>
+                                                <input type="text" class="form-control required" id="txtalumnoapellidos" name="alumnoapellidos" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <button type="button" onclick="buscarAlumno()" id="btnBuscar" class="btn btn-success">Buscar</button>
+                                                <button type="button" onclick="limpiarAlumno()" class="btn btn-info">Limpiar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-end">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="txtalumnofechanacimiento">Fecha Nacimiento</label>
+                                                <input type="text" class="form-control required" id="txtalumnofechanacimiento" name="alumnofechanacimiento" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="cboalumnosexo">Sexo</label>
+                                                <select id="cboalumnosexo" class="form-control">
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtalumnociudad">Ciudad</label>
+                                                <input type="text" class="form-control required" id="txtalumnociudad" name="alumnociudad" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label for="txtalumnodireccion">Direccion</label>
+                                                <input type="text" class="form-control required" id="txtalumnodireccion" name="alumnodireccion" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--DATOS DEL APODERADO-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body p-2">
+                                    <p class="card-title"><ins>Datos del Apoderado</ins></p>
+                                    <div class="row align-items-end">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="cboapoderadotiporelacion">Tipo Relacion</label>
+                                                <select id="cboapoderadotiporelacion" class="form-control">
+                                                    <option value="Madre">Madre</option>
+                                                    <option value="Padre">Padre</option>
+                                                    <option value="Tio">Tio</option>
+                                                    <option value="Tia">Tia</option>
+                                                    <option value="Abuelo">Abuelo</option>
+                                                    <option value="Abuela">Abuela</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="txtapoderadodocumentoidentidad">Documento Identidad</label>
+                                                <input type="text" class="form-control required" id="txtapoderadodocumentoidentidad" name="apoderadodocumentoidentidad" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtapoderadonombres">Nombres</label>
+                                                <input type="text" class="form-control required" id="txtapoderadonombres" name="apoderadonombres" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtapoderadoapellidos">Apellidos</label>
+                                                <input type="text" class="form-control required" id="txtapoderadoapellidos" name="apoderadoapellidos" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="txtapoderadofechanacimiento">Fecha Nacimiento</label>
+                                                <input type="text" class="form-control required" id="txtapoderadofechanacimiento" name="apoderadofechanacimiento" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-end">
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="cboapoderadosexo">Sexo</label>
+                                                <select id="cboapoderadosexo" class="form-control">
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label for="cboapoderadoestadocivil">Estado Civil</label>
+                                                <select id="cboapoderadoestadocivil" class="form-control">
+                                                    <option value="Casado(a)">Casado(a)</option>
+                                                    <option value="Divorciado(a)">Divorciado(a)</option>
+                                                    <option value="Soltero(a)">Soltero(a)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label for="txtapoderadociudad">Ciudad</label>
+                                                <input type="text" class="form-control required" id="txtapoderadociudad" name="apoderadociudad" autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <div class="form-group">
+                                                <label for="txtapoderadodireccion">Direccion</label>
+                                                <input type="text" class="form-control required" id="txtapoderadodireccion" name="apoderadodireccion" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-danger float-right" onclick="salir()">Salir</button>
+                <button type="button" class="btn btn-success float-right mr-2" onclick="registrar()">Registrar Matricula</button>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalReferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><span>Lista de Alumnos</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tbModal" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Codigo</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Documento Identidad</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Controllers/CrearMatricula.js")" type="text/javascript"></script>
+}
+

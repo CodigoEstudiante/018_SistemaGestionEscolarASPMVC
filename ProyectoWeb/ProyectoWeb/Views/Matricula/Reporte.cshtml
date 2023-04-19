@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Reporte Matricula";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section estilos{
+    <link href="~/Content/Plugins/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <style>
+        .buttons-excel {
+            color: #fff !important;
+            background-color: #28a745 !important;
+            border-color: #28a745 !important;
+        }
+
+        .buttons-print {
+            color: #fff !important;
+            background-color: #17a2b8 !important;
+            border-color: #17a2b8 !important;
+        }
+    </style>
+
+}
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Datos
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="txtcodigomatricula">Codigo Matricula</label>
+                            <input type="text" class="form-control" id="txtcodigomatricula">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="cbosituacionmatricula">Situacion Matricula</label>
+                            <select class="form-control" id="cbosituacionmatricula">
+                                <option value="">Todos</option>
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Antiguo">Antiguo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="cboperiodo">Periodo</label>
+                            <select class="form-control" id="cboperiodo"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="cbonivelacademico">Nivel Academico</label>
+                            <select class="form-control" id="cbonivelacademico"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cbogradoseccion">Grado Seccion</label>
+                            <select class="form-control" id="cbogradoseccion"></select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row align-items-end">
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="txtcodigoalumno">Codigo Alumno</label>
+                            <input type="text" class="form-control" id="txtcodigoalumno">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="txtdocidentidad">Doc. Identidad</label>
+                            <input type="text" class="form-control" id="txtdocidentidad">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="txtnombres">Nombres</label>
+                            <input type="text" class="form-control" id="txtnombres">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="txtcodigo">Apellidos</label>
+                            <input type="text" class="form-control" id="txtapellidos">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <button id="btnbuscar" type="button" class="btn btn-primary btn-block" onclick="Buscar()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                Resultados
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="tbdata" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Codigo Matricula</th>
+                                    <th>Situacion</th>
+                                    <th>Repitente</th>
+                                    <th>Nivel Academico</th>
+                                    <th>Turno</th>
+                                    <th>Grado</th>
+                                    <th>Seccion</th>
+                                    <th>Codigo Alumno</th>
+                                    <th>Documento</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+
+
+    <script src="~/Content/Plugins/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="~/Content/Plugins/datatables/js/jszip/jszip.min.js"></script>
+    <script src="~/Content/Plugins/datatables/js/pdfmake/pdfmake.min.js"></script>
+    <script src="~/Content/Plugins/datatables/js/pdfmake/vfs_fonts.js"></script>
+    <script src="~/Content/Plugins/datatables/js/buttons.html5.min.js"></script>
+    <script src="~/Content/Plugins/datatables/js/buttons.print.min.js"></script>
+    
+    <script src="@Url.Content("~/Scripts/Controllers/ReporteMatricula.js")" type="text/javascript"></script>
+}
+

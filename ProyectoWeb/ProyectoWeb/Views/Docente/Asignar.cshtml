@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Asignar Docente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        Asignar docente por curso
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cboPeriodo">Periodo</label>
+                            <select id="cboperiodo" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cboNivelAcademico">Nivel Academico</label>
+                            <select id="cboNivelAcademico" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cboGradoSeccion">Grado Seccion</label>
+                            <select id="cboGradoSeccion" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="bg"></label>
+                            <button type="button" class="btn btn-success btn-block mt-1" id="btnBuscar" onclick="Buscar()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cboCurso">Curso</label>
+                            <select id="cboCurso" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="cboDiaSemana">Docente</label>
+                            <select id="cboDocente" class="form-control"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label class="bg"></label>
+                            <button type="button" class="btn btn-secondary btn-block mt-1" id="btnBuscar" onclick="Asignar()">Asignar</button>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="tbasignados" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>IdCurso</th>
+                                    <th>Codigo Docente</th>
+                                    <th>Docente</th>
+                                    <th>Nivel Academico</th>
+                                    <th>Grado - Seccion</th>
+                                    <th>Curso</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script src="@Url.Content("~/Scripts/Controllers/AsignarDocente.js")" type="text/javascript"></script>
+}

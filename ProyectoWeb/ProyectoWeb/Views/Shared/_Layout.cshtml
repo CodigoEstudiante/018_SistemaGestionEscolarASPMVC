@@ -1,0 +1,144 @@
+﻿@using ProyectoWeb.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/PluginsCSS")
+    @RenderSection("estilos", required: false)
+</head>
+<body>
+    <div class="navbar navbar-expand-sm bg-dark navbar-dark">
+      
+
+        @Html.ActionLink("school name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        <!-- Links -->
+        <ul class="nav navbar-nav">
+
+            @Html.ActionLinkAllow()
+            <li class="nav-item">
+                <a class="nav-link" href="https://ouo.io/VRgLgZ" target="_blank">Click y ayuda al Canal</a>
+            </li>
+
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+            
+            <li class="nav-item">
+                <a href="@Url.Action("Salir", "Home")" class="nav-link">
+                    <i class="fas fa-arrow-alt-circle-right"></i>
+                    <span>
+                        <strong>Salir</strong>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid mt-4">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/PluginsJS")
+    <script type="text/javascript">
+
+        $.extend({ MisUrls: { url: {}, urls: function (a) { $.extend($.MisUrls.url, a); } } });
+
+        $.MisUrls.urls({ UrlGetRoles: '@Url.Action("Listar", "Rol")' });
+        $.MisUrls.urls({ UrlGetRol: '@Url.Action("Obtener", "Rol")' });
+        $.MisUrls.urls({ UrlPostRol: '@Url.Action("Guardar", "Rol")' });
+        $.MisUrls.urls({ UrlDeleteRol: '@Url.Action("Eliminar", "Rol")' });
+
+        //ROL PERMISOS
+        $.MisUrls.urls({ UrlGetRolPermisos: '@Url.Action("Obtener", "RolPermiso")' });
+        $.MisUrls.urls({ UrlPostGuardarCambios: '@Url.Action("Guardar", "RolPermiso")' });
+
+        //USUARIO
+        $.MisUrls.urls({ UrlGetUsuarios: '@Url.Action("Listar", "Usuario")' });
+        $.MisUrls.urls({ UrlPostUsuario: '@Url.Action("Guardar", "Usuario")' });
+        $.MisUrls.urls({ UrlGetUsuario: '@Url.Action("Obtener", "Usuario")' });
+        $.MisUrls.urls({ UrlDeleteUsuario: '@Url.Action("Eliminar", "Usuario")' });
+
+        //ALUMNO
+        $.MisUrls.urls({ UrlGetAlumnos: '@Url.Action("Listar", "Alumno")' });
+        $.MisUrls.urls({ UrlPostGuardarAlumno: '@Url.Action("Guardar", "Alumno")' });
+        $.MisUrls.urls({ UrlGetEliminarAlumno: '@Url.Action("Eliminar", "Alumno")' });
+        $.MisUrls.urls({ UrlGetConsultaReporteAlumno: '@Url.Action("ConsultaReporte", "Alumno")' });
+
+
+        //DOCENTE
+        $.MisUrls.urls({ UrlGetDocentes: '@Url.Action("Listar", "Docente")' });
+        $.MisUrls.urls({ UrlGetListarAsignados: '@Url.Action("ListarAsignados", "Docente")' });
+        $.MisUrls.urls({ UrlPostDocenteGuardarAsignacion: '@Url.Action("GuardarAsignacion", "Docente")' });
+        $.MisUrls.urls({ UrlPostGuardarDocente: '@Url.Action("Guardar", "Docente")' });
+        $.MisUrls.urls({ UrlGetEliminarDocente: '@Url.Action("Eliminar", "Docente")' });
+        $.MisUrls.urls({ UrlGetNivelAcademicoxDocente: '@Url.Action("NivelAcademicoxDocente", "Docente")' });
+        $.MisUrls.urls({ UrlGetGradoSeccionxDocente: '@Url.Action("GradoSeccionxDocente", "Docente")' });
+        $.MisUrls.urls({ UrlGetCursosxDocente: '@Url.Action("CursosxDocente", "Docente")' });
+        $.MisUrls.urls({ UrlGetListarCurricula: '@Url.Action("ListarCurricula", "Docente")' });
+        $.MisUrls.urls({ UrlPostAgregarCurricula: '@Url.Action("AgregarCurricula", "Docente")' });
+        $.MisUrls.urls({ UrlGetEliminarCurricula: '@Url.Action("EliminarCurricula", "Docente")' });
+        $.MisUrls.urls({ UrlGetObtenerAlumnosAsignados: '@Url.Action("ObtenerAlumnosAsignados", "Docente")' });
+        $.MisUrls.urls({ UrlGetObtenerNotas: '@Url.Action("ObtenerNotas", "Docente")' });
+        $.MisUrls.urls({ UrlPostGuardarNotas: '@Url.Action("GuardarNotas", "Docente")' });
+
+
+        //PERIODO
+        $.MisUrls.urls({ UrlGetPeriodos: '@Url.Action("Listar", "Periodo")' });
+        $.MisUrls.urls({ UrlPostPeriodo: '@Url.Action("Guardar", "Periodo")' });
+        $.MisUrls.urls({ UrlDeletePeriodo: '@Url.Action("Eliminar", "Periodo")' });
+
+        //NIVEL ACADEMICO
+        $.MisUrls.urls({ UrlGetNivelesAcademicos: '@Url.Action("Listar", "NivelAcademico")' });
+        $.MisUrls.urls({ UrlPostNivelAcademico: '@Url.Action("Guardar", "NivelAcademico")' });
+        $.MisUrls.urls({ UrlDeleteNivelAcademico: '@Url.Action("Eliminar", "NivelAcademico")' });
+
+        //GRADO SECCION
+        $.MisUrls.urls({ UrlGetGradosSecciones: '@Url.Action("Listar", "GradoSeccion")' });
+        $.MisUrls.urls({ UrlGeGradosxNivel: '@Url.Action("ListarGradosxNivel", "GradoSeccion")' });
+        $.MisUrls.urls({ UrlPostGradoSeccion: '@Url.Action("Guardar", "GradoSeccion")' });
+        $.MisUrls.urls({ UrlDeleteGradoSeccion: '@Url.Action("Eliminar", "GradoSeccion")' });
+
+
+        //GRADO POR NIVEL
+        $.MisUrls.urls({ UrlGetGradosxNiveles: '@Url.Action("Listar", "GradoporNivel")' });
+        $.MisUrls.urls({ UrlPostGradoxNivel: '@Url.Action("Guardar", "GradoporNivel")' });
+
+
+        //ASIGNAR CURSOS
+        $.MisUrls.urls({ UrlGetCursosxNivelGrado: '@Url.Action("CursosxNivelGrado", "Curso")' });
+        $.MisUrls.urls({ UrlPostGuardarAsignacion: '@Url.Action("GuardarAsignacion", "Curso")' });
+        $.MisUrls.urls({ UrlGetListarCursos: '@Url.Action("Listar", "Curso")' });
+        $.MisUrls.urls({ UrlPostGuardarCurso: '@Url.Action("Guardar", "Curso")' });
+        $.MisUrls.urls({ UrlGetEliminarCurso: '@Url.Action("Eliminar", "Curso")' });
+
+        //VACANTE
+        $.MisUrls.urls({ UrlGetListarVacantes: '@Url.Action("Listar", "Vacante")' });
+        $.MisUrls.urls({ UrlPostGuardarVacantes: '@Url.Action("Guardar", "Vacante")' });
+
+
+        //HORARIO
+        $.MisUrls.urls({ UrlGetListarHorario: '@Url.Action("Listar", "Horario")' });
+        $.MisUrls.urls({ UrlPostAsignarHorario: '@Url.Action("Asignar", "Horario")' });
+        $.MisUrls.urls({ UrlPostEliminarHorario: '@Url.Action("Eliminar", "Horario")' });
+
+
+        //MATRICULA
+        $.MisUrls.urls({ UrlGetCantidadVacantes: '@Url.Action("ObtenerCantidadVacantes", "Matricula")' });
+        $.MisUrls.urls({ UrlPostRegistrarMatricula: '@Url.Action("Registrar", "Matricula")' });
+        $.MisUrls.urls({ UrlPostMatriculaConsultaReporte: '@Url.Action("ConsultaReporte", "Matricula")' });
+
+        $.MisUrls.urls({ Url_datatable_spanish: '@Url.Content("~/content/plugins/datatables/js/datatable_spanish.json")' });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

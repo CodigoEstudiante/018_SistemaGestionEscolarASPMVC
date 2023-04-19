@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .content {
+            margin:8%;
+            background-color:#fff;
+            box-shadow: 0 0 5px #4c4c4c;
+            padding: 15px 2px;
+            border-radius:4px;
+        }
+        body {
+            background-color: #DDE1D6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row content">
+            <div class="col-md-6">
+                <img class="img-fluid" id="img1" src="@Href("~/Resources/Images/imagecollege.jpg")" />
+            </div>
+            <div class="col-md-6">
+                <h3 class="signin-tex mb-3">
+                    school name
+                </h3>
+                <form action="@Url.Content("~/Login/Index")" method="post">
+                    <div class="form-group">
+                        <label for="txtusuario">Usuario</label>
+                        <input type="text" name="usuario" id="txtusuario" class="form-control" value="Admin" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtusuario">Contraseña</label>
+                        <input type="password" name="contrasenia" id="txtcontrasenia" class="form-control" value="Admin123" />
+                    </div>
+                    <button class="btn btn-primary">Ingresar</button>
+                </form>
+                <span class="badge badge-danger">@ViewBag.Error</span>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

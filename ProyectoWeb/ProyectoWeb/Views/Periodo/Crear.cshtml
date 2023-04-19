@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Periodo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-10">
+                        Lista de Periodos
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-sm float-right" onclick="abrirPopUpForm(null)">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Agregar Nuevo
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table id="tbperiodo" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Descripcion</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="FormModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Periodo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input id="txtIdPeriodo" type="hidden" value="0" />
+
+                <form id="formPeriodo">
+                    <div class="form-group">
+                        <label for="txtDescripcion">Descripcion</label>
+                        <input type="text" class="form-control required" id="txtDescripcion" name="descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaInicio">Fecha Inicio</label>
+                        <input type="text" class="form-control required" id="txtFechaInicio" data-date-format="dd/mm/yyyy" name="fechainicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFechaFin">Fecha Fin</label>
+                        <input type="text" class="form-control required" id="txtFechaFin" data-date-format="dd/mm/yyyy" name="fechafin">
+                    </div>
+                    <div class="form-group">
+                        <label for="cboEstado">Estado</label>
+                        <select id="cboEstado" class="form-control">
+                            <option value="1">Activo</option>
+                            <option value="0">No Activo</option>
+                        </select>
+                    </div>
+                </form>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/Controllers/Periodo.js")" type="text/javascript"></script>
+}
